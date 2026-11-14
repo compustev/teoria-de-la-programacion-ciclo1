@@ -1,0 +1,73 @@
+Algoritmo_APE6
+Inicio
+//DESCRIPCIÓN DE PASOS A SEGUIR:
+//1. Definir las constantes simbolicas (porcentajes de cada evaluacion y nota minima para aprobar).
+//2. Leer las tres notas del estudiante (individual, trabajo grupal y evaluacion final).
+//3. Validar que las tres notas esten entre 0 y 10.
+//4. Calcular la nota final aplicando los porcentajes (30%, 30% y 40%).
+//5. Clasificar el rendimiento (Excelente, Muy bueno, Bueno, Regular o Deficiente).
+//6. Determinar el estado academico (Aprobado o Reprobado).
+//7. Mostrar por pantalla los resultados y los mensajes segun la nota final.
+
+//Definicion de constantes simbolicas
+PESO_INDIVIDUAL = 0.30 ;
+PESO_GRUPAL = 0.30 ;
+PESO_FINAL = 0.40 ;
+NOTA_APROBACION = 7 ;
+
+//Lectura de datos del estudiante
+Leer nota_individual ;
+Leer trabajo_grupal ;
+Leer evaluacion_final ;
+
+//Validacion de las notas (deben estar entre 0 y 10)
+Si (nota_individual >= 0) Y (nota_individual <= 10) Y (trabajo_grupal >= 0) Y (trabajo_grupal <= 10) Y (evaluacion_final >= 0) Y (evaluacion_final <= 10) entonces ;
+
+//Calculo de la nota final
+nota_final = (nota_individual * PESO_INDIVIDUAL) + (trabajo_grupal * PESO_GRUPAL) + (evaluacion_final * PESO_FINAL) ;
+
+//Clasificacion del rendimiento (condicional multiple)
+Si nota_final >= 9 entonces ;
+rendimiento = "Excelente" ;
+Sino ;
+Si nota_final >= 8 entonces ;
+rendimiento = "Muy bueno" ;
+Sino ;
+Si nota_final >= 7 entonces ;
+rendimiento = "Bueno" ;
+Sino ;
+Si nota_final >= 5 entonces ;
+rendimiento = "Regular" ;
+Sino ;
+rendimiento = "Deficiente" ;
+FinSi ;
+FinSi ;
+FinSi ;
+FinSi ;
+
+//Estado academico (condicional doble)
+Si nota_final >= NOTA_APROBACION entonces ;
+estado = "Aprobado" ;
+Sino ;
+estado = "Reprobado" ;
+FinSi ;
+
+//Mostrar los resultados por pantalla
+Escribir "--- CALCULO DE NOTA FINAL ---" ;
+Escribir "La nota final es: " + nota_final ;
+Escribir "Rendimiento: " + rendimiento ;
+Escribir "Estado: " + estado ;
+
+//Mensajes adicionales (condicionales simples)
+Si nota_final < NOTA_APROBACION entonces ;
+Escribir "El estudiante requiere refuerzo academico" ;
+FinSi ;
+Si nota_final >= 9 entonces ;
+Escribir "¡Felicitaciones! Rendimiento sobresaliente" ;
+FinSi ;
+
+Sino ;
+//Si alguna nota esta fuera del rango permitido
+Escribir "Notas no validas: deben estar entre 0 y 10" ;
+FinSi ;
+Fin
